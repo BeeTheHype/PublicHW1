@@ -20,20 +20,14 @@ if [ ! -d "$folderpath" ]; then
     else
         echo "Failure: Failed to clone from $giturl to $folderpath :("
     fi
-fi
-
-if [ -d "$folderpath" ]; then
-    git pull origin main
+else
+    git -C $folderpath pull $giturl main
     if [ $? -eq 0 ]; then
         echo "Success: Pulled from $giturl to $folderpath!"
     else
         echo "Failure: Failed to pull from $giturl to $folderpath :("
     fi
 fi
-
-
-
-
 
 currentls=echo ls -la
 echo $currentls
