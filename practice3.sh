@@ -11,16 +11,18 @@ if [ "$folderpath" = "" ]; then
 fi
 #above code checks for parameters
 
-if [ -d "$folderpath" ]; then
+
+if [ ! -d "$folderpath" ]; then
     mkdir $folderpath
+    git clone $giturl $folderpath
+    if [ $? -eq 0 ]; then
+        echo "Success: Cloned from $giturl to $folderpath!"
+    else
+        echo "Failure: Failed to clone from $giturl to $folderpath :("
+    fi
 fi
 
-git clone $giturl $folderpath
-if [ $? -eq 0 ]; then
-    echo "Success: Cloned from $giturl to $folderpath!"
-else
-    echo "Failure: Failed to clone from $giturl to $folderpath :("
-fi
+
 
 
 
