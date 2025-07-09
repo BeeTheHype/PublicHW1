@@ -22,6 +22,15 @@ if [ ! -d "$folderpath" ]; then
     fi
 fi
 
+if [ -d "$folderpath" ]; then
+    git pull origin main
+    if [ $? -eq 0 ]; then
+        echo "Success: Pulled from $giturl to $folderpath!"
+    else
+        echo "Failure: Failed to pull from $giturl to $folderpath :("
+    fi
+fi
+
 
 
 
